@@ -1,33 +1,17 @@
 import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import Users from "./Users";
+import Tasks from "./Tasks";
 
-const App = () => {
-  const putRows = () => [
-    <tr>
-      <td>Joaquin</td>
-      <td>joaquinemayer@gmail.com</td>
-      <td>www.joaquinmayer.com</td>
-    </tr>,
-    <tr>
-      <td>Ezequiel</td>
-      <td>jezequielmayer@gmail.com</td>
-      <td>www.ezequielmayer.com</td>
-    </tr>,
-  ];
-
-  return (
+const App = () => (
+  <BrowserRouter>
+    <Navbar />
     <div className="margin">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Enlace</th>
-          </tr>
-        </thead>
-        <tbody>{putRows()}</tbody>
-      </table>
+      <Route exact path="/" component={Users} />
+      <Route exact path="/tasks" component={Tasks} />
     </div>
-  );
-};
+  </BrowserRouter>
+);
 
 export default App;
