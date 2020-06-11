@@ -1,9 +1,9 @@
-import { GET_POSTS, LOADING, ERROR } from "../types/postsTypes";
+import { GET_POSTS_BY_USER, LOADING, ERROR } from "../types/postsTypes";
 const INITIAL_STATE = { posts: [], loading: false, error: "" };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case GET_POSTS:
+    case GET_POSTS_BY_USER:
       return { ...state, posts: action.payload, loading: false, error: '' };
     case LOADING:
       return { ...state, loading: true };
