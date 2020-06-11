@@ -7,7 +7,7 @@ import Table from "../Users/Table";
 
 function Users(props) {
   useEffect(() => {
-    props.getAll();
+    props.usersGetAll();
   }, []);
 
   let ponerContenido = () => {
