@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as userActions from "../../actions/usersActions";
-import Spinner from '../General/Spinner'
+import Spinner from "../General/Spinner";
+import Fatal from "../General/Fatal";
+import Table from "../Users/Table";
 
 function Users(props) {
   useEffect(() => {
@@ -9,34 +11,23 @@ function Users(props) {
   }, []);
 
   let ponerContenido = () => {
-    if(props.loading){
-      return <Spinner />
+    if (props.loading) {
+      return <Spinner />;
     }
 
-    return (
-    <table className="table">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Email</th>
-          <th>Enlace</th>
-        </tr>
-      </thead>
-      <tbody>
-        {props.users.map((user) => (
-          <tr key={user.id}>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
-            <td>{user.website}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )};
+    if (props.error) {
+      return <Fatal message={props.error} />;
+    }
 
-  return <div>
-    {ponerContenido()}
-  </div>;
+    return <Table />;
+  };
+
+  return (
+    <div>
+      <h1>Users:</h1>
+      {ponerContenido()}
+    </div>
+  );
 }
 
 const mapStatetoProps = (reducers) => {

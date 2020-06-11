@@ -8,6 +8,7 @@
 }
 
 .table {
+  margin-top: 20px;
   width: 100%;
   text-align: left;
 }
@@ -30,6 +31,10 @@
 
 .center{
   text-align: center;
+}
+
+.text-red{
+  color: red;
 }
 
 .lds-ring {
