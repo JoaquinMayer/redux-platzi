@@ -5,14 +5,21 @@ import * as userActions from "../../actions/usersActions";
 import * as postActions from "../../actions/postsActions";
 
 const Posts = (props) => {
-  console.log(props);
+  console.log(props)
+  const {
+    usersGetAll,
+    getPostByUser,
+    match: { params: key },
+  } = props;
 
   useEffect(() => {
     async function fetchData() {
       if (!props.userReducer.users.length) {
-        await props.usersGetAll();
+        await usersGetAll();
       }
-      props.getPostByUser(props.match.params.key);
+      if (!("posts_key" in props.userReducer.users[key])) {
+        getPostByUser(key);
+      }
     }
     fetchData();
   }, []);
